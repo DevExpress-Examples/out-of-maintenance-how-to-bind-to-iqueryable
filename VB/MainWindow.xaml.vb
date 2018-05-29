@@ -41,9 +41,7 @@ Namespace InfiniteAsyncSourceEFSample
         Private Shared Function FetchRows(ByVal e As FetchRowsAsyncEventArgs) As FetchRowsResult
             Dim queryable = GetIssueDataQueryable().SortBy(e.SortOrder, defaultUniqueSortPropertyName:= "Id").Where(MakeFilterExpression(e.Filter))
 
-            Dim issues = queryable.Skip(e.Skip).Take(30).ToList()
-
-            Return issues.ToArray()
+            Return queryable.Skip(e.Skip).Take(30).ToArray()
         End Function
 
         Private Sub OnSearchStringToFilterCriteria(ByVal sender As Object, ByVal e As SearchStringToFilterCriteriaEventArgs)
