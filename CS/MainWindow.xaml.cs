@@ -44,12 +44,10 @@ namespace InfiniteAsyncSourceEFSample {
                 .SortBy(e.SortOrder, defaultUniqueSortPropertyName: "Id")
                 .Where(MakeFilterExpression(e.Filter));
 
-            var issues = queryable
+            return queryable
                 .Skip(e.Skip)
                 .Take(30)
-                .ToList();
-
-            return issues.ToArray();
+                .ToArray();
         }
 
         void OnSearchStringToFilterCriteria(object sender, SearchStringToFilterCriteriaEventArgs e) {
