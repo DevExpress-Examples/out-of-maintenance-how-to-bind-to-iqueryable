@@ -28,7 +28,7 @@ namespace InfiniteAsyncSourceEFSample {
                     e.ResultWithCounts = Task.Run(() => {
                         return GetIssueDataQueryable().DistinctWithCounts(e.PropertyName);
                     });
-                }
+                } 
                 e.Result = Task.Run(() => {
                     return GetIssueDataQueryable().Distinct(e.PropertyName);
                 });
