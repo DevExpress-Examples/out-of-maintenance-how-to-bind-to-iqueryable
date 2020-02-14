@@ -24,9 +24,10 @@ namespace InfiniteAsyncSourceEFSample {
             };
 
             source.GetUniqueValues += (o, e) => {
-                e.Result = Task.Run(() => {
-                    return GetIssueDataQueryable().Distinct(e.PropertyName);
-                });
+                if (e.PropertyName == "User") {
+                    e.ResultWithCounts = Task.Run(() => GetIssueDataQueryable().DistinctWithCounts(e.PropertyName));
+                }
+                e.Result = Task.Run(() => GetIssueDataQueryable().Distinct(e.PropertyName));
             };
 
             source.GetTotalSummaries += (o, e) => {
