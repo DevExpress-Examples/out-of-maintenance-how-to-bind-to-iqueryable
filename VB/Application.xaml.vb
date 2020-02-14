@@ -8,14 +8,14 @@ Imports System.Threading.Tasks
 Imports System.Windows
 
 Namespace InfiniteAsyncSourceEFSample
-    ''' <summary>
-    ''' Interaction logic for App.xaml
-    ''' </summary>
-    Partial Public Class App
-        Inherits Application
+	''' <summary>
+	''' Interaction logic for App.xaml
+	''' </summary>
+	Partial Public Class App
+		Inherits Application
 
-        Public Sub New()
-            DbEngineDetector.PatchConnectionStringsAndConfigureEntityFrameworkDefaultConnectionFactory()
-        End Sub
-    End Class
+		Public Sub New()
+			DbEngineDetector.PatchConnectionStringsAndConfigureEntityFrameworkDefaultConnectionFactory()
+		End Sub
+	End Class
 End Namespace
