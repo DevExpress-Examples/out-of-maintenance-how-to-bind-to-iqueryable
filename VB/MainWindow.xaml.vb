@@ -55,15 +55,10 @@ Namespace InfiniteAsyncSourceEFSample
 
 		Private Shared Function MakeFilterExpression(ByVal filter As CriteriaOperator) As Expression(Of Func(Of IssueData, Boolean))
 			Dim converter = New GridFilterCriteriaToExpressionConverter(Of IssueData)()
-			converter.RegisterFunctionExpressionFactory(operatorType:= FunctionOperatorType.StartsWith, factory:= Function(value As String)
-				Dim toLowerValue = value.ToLower()
-				Return x
-				If True Then
-					Get
-						Return x.ToLower().StartsWith(toLowerValue)
-					End Get
-				End If
-			End Function)
+			converter.RegisterFunctionExpressionFactory(operatorType:=FunctionOperatorType.StartsWith, factory:=Function(ByVal value As String)
+																													Dim toLowerValue = value.ToLower()
+																													Return Function(x) x.ToLower().StartsWith(toLowerValue)
+																												End Function)
 			Return converter.Convert(filter)
 		End Function
 
