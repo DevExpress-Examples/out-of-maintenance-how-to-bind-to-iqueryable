@@ -13,7 +13,7 @@
             <dxg:GridControl.Columns>
                 <dxg:GridColumn FieldName="Subject" IsSmart="True" Width="2*"/>
                 <dxg:GridColumn FieldName="User" IsSmart="True" Width="*"
-                                AllowedBinaryFilters="Equals"/>
+                                AllowedBinaryFilters="Equals,DoesNotEqual" AllowedAnyOfFilters="All"/>
                 <dxg:GridColumn FieldName="Created" IsSmart="True" Width="*"
                                 AllowSorting="True" DefaultSortOrder="Descending"
                                 AllowedDateTimeFilters="SingleDateRange" FilterPopupMode="DateSmart">

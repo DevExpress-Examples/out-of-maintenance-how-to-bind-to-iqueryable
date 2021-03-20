@@ -24,14 +24,11 @@ namespace InfiniteAsyncSourceEFSample {
             };
 
             source.GetUniqueValues += (o, e) => {
-                if (e.PropertyName == "User") {
-                    e.ResultWithCounts = Task.Run(() => {
-                        return GetIssueDataQueryable().DistinctWithCounts(e.PropertyName);
-                    });
-                } 
-                e.Result = Task.Run(() => {
-                    return GetIssueDataQueryable().Distinct(e.PropertyName);
-                });
+                if(e.PropertyName == "User") {
+                    e.ResultWithCounts = Task.Run(() => GetIssueDataQueryable().DistinctWithCounts(e.PropertyName));
+                } else {
+                    e.Result = Task.Run(() => GetIssueDataQueryable().Distinct(e.PropertyName));
+                }
             };
 
             source.GetTotalSummaries += (o, e) => {
@@ -51,7 +48,7 @@ namespace InfiniteAsyncSourceEFSample {
 
             return queryable
                 .Skip(e.Skip)
-                .Take(30)
+                .Take(e.Take ?? 30)
                 .ToArray();
         }
 
